@@ -15,9 +15,9 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     const where = search
       ? {
         OR: [
-          { title: { contains: search, mode: "insensitive" } },
-          { author: { contains: search, mode: "insensitive" } },
-          { isbn: { contains: search, mode: "insensitive" } }
+          { title: { contains: search } },
+          { author: { contains: search } },
+          { isbn: { contains: search } }
         ]
       }
     : {};

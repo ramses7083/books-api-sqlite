@@ -116,6 +116,33 @@ curl -X PATCH http://localhost:3000/api/books/1 \
 ```bash
 curl -X DELETE http://localhost:3000/api/books/1
 ```
+---
+
+## 🧪 Pruebas automáticas
+
+El proyecto usa [Vitest](https://vitest.dev/) para pruebas y una base de datos SQLite separada (`test.db`).
+
+### Configuración inicial para pruebas
+
+Antes de correr las pruebas por primera vez, inicializa la base de datos de test:
+
+```bash
+npm run test:setup
+```
+
+Esto creará y migrará `test.db` en la raíz del proyecto.
+
+### Ejecutar pruebas una sola vez
+```bash
+npm test
+```
+
+### Ejecutar pruebas en modo watch (desarrollo)
+```bash
+npm run test:watch
+```
+
+Puedes agregar o modificar tests en la carpeta `tests/`.
 
 ---
 
@@ -132,10 +159,13 @@ books-api-sqlite/
 ├─ prisma/
 │  ├─ schema.prisma          # Modelo de datos
 │  └─ seed.ts                # Datos de ejemplo
+├─ tests/                    # Pruebas automáticas (Vitest)
+│  └─ books.e2e.test.ts      # Ejemplo de test end-to-end
 ├─ .env                      # Configuración
 ├─ tsconfig.json             # Configuración TypeScript
 ├─ package.json              # Dependencias y scripts
-└─ dev.db                    # Base de datos SQLite
+├─ dev.db                    # Base de datos SQLite (desarrollo)
+└─ test.db                   # Base de datos SQLite (pruebas)
 ```
 
 ---

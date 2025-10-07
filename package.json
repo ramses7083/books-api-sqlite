@@ -8,7 +8,10 @@
     "build": "tsc -p tsconfig.json",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "test:setup": "cross-env DATABASE_URL=\"file:./test.db\" npx prisma db push --force-reset",
+    "test": "cross-env NODE_ENV=test DATABASE_URL=\"file:./test.db\" vitest run",
+    "test:watch": "cross-env NODE_ENV=test DATABASE_URL=\"file:./test.db\" vitest"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -28,9 +31,13 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.7.0",
+    "@types/supertest": "^6.0.3",
+    "cross-env": "^10.1.0",
     "nodemon": "^3.1.10",
     "prisma": "^6.17.0",
+    "supertest": "^7.1.4",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   }
 }

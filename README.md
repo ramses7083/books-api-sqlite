@@ -165,7 +165,28 @@ books-api-sqlite/
 ├─ tsconfig.json             # Configuración TypeScript
 ├─ package.json              # Dependencias y scripts
 ├─ dev.db                    # Base de datos SQLite (desarrollo)
-└─ test.db                   # Base de datos SQLite (pruebas)
+├─ test.db                   # Base de datos SQLite (pruebas)
+├─ Dockerfile                # Dockerización de la app
+└─ .dockerignore             # Ignora archivos para la imagen Docker
+```
+
+---
+
+## 🐳 Dockerización
+
+### Construir la imagen Docker
+```bash
+docker build -t books-api-sqlite .
+```
+
+### Ejecutar el contenedor
+```bash
+docker run -p 3000:3000 --env-file .env books-api-sqlite
+```
+
+Si quieres persistir la base de datos fuera del contenedor:
+```bash
+docker run -p 3000:3000 --env-file .env -v $(pwd)/dev.db:/app/dev.db books-api-sqlite
 ```
 
 ---

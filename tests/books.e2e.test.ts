@@ -35,7 +35,7 @@ describe("Books API", () => {
   it("GET /api/books lists books", async () => {
     const res = await request(app).get("/api/books").expect(200);
     expect(Array.isArray(res.body.items)).toBe(true);
-    expect(res.body.total).toBeGreaterThanOrEqual(1);
+    expect(res.body.total).toBeGreaterThanOrEqual(2);
   });
 
   it("GET /api/books/:id returns the book", async () => {
